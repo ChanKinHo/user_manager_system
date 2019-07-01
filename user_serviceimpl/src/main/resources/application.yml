@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+dubbo:
+  registry:
+    address: zookeeper://192.168.177.211:2181
+  application:
+    name: user_service
+  protocol:
+    port: -1
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 1021
+    url: jdbc:mysql:///emaildubbo

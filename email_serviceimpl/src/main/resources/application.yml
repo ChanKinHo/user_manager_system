@@ -1,0 +1,14 @@
+spring:
+  mail:
+    protocol: smtp
+    host: smtp.sina.com
+    username: chankinho@sina.com
+    password: zxcvbnmh0
+
+dubbo:
+  registry:
+    address: zookeeper://192.168.177.211:2181
+  application:
+    name: email_service
+  protocol:
+    port: -1

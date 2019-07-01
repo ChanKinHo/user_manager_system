@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>设置密码</h1>
+
+<form action="/user/setNew" method="post" onsubmit="return checkPass()">
+    <input type="hidden" name="id" th:value="${id}" />
+    输入新密码:<input type="text" id="p1" />
+    确认新密码:<input type="text" name="password" id="p2" />
+    <input type="submit" value="确认修改" />
+</form>
+
+<script src="/jquery/jquery-2.1.1.min.js"></script>
+<script>
+    function checkPass() {
+        var p1 = $("#p1").val().trim();
+        var p2 = $("#p2").val().trim();
+        if (p1 !=null && p1 != "" && p2 !=null && p2 != "") {
+            if (p1==p2) {
+                return true;
+            }
+        }
+
+        alert("密码不一致或为空！")
+        return false;
+    }
+</script>
+
+</body>
+</html>

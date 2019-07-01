@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base href="http://localhost:8080/" />
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2 th:text="${msg}"></h2>
+    <form action="/user/register" method="post">
+        <table>
+            <tr>
+                <td>用户名:</td><td><input type="text" name="username"></td>
+            </tr>
+            <tr>
+                <td>密码:</td><td><input type="text" name="password"></td>
+            </tr>
+            <tr>
+                <td>昵称:</td><td><input type="text" name="nickname"></td>
+            </tr>
+            <tr>
+                <td>邮箱:</td><td><input type="text" name="email" id="email"><input type="button" value="点击是发送验证码" onclick="sendCode1()" /></td>
+            </tr>
+            <tr>
+                <td>输入验证码:</td><td><input type="text" name="code" id="checkCode"></td>
+            </tr>
+        </table>
+            <input type="submit" value="提交" />
+
+    </form>
+
+    <script src="/jquery/jquery-2.1.1.min.js"></script>
+    <script>
+
+        function sendCode1() {
+            var email = $("#email").val();
+
+            var isEmail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+
+            if(email == ""){
+                alert("邮箱不能为空！")
+            }
+            else if(!(isEmail.test(email))){
+                alert("邮箱格式不正确");
+            }
+            else {
+
+            $.ajax({
+                type: "GET",
+                url:"user/sendCode?email="+email,
+                contentType:"application/json; charset=utf-8",
+                dataType:"json",
+
+            });
+            }
+        }
+    </script>
+</body>
+</html>
